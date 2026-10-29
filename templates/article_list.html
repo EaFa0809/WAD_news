@@ -31,19 +31,23 @@
             {{ article.body|linebreaks }}
         </div>
 
-        <div class="card-footer text-center text-muted">
+        {% if article.author.pk == request.user.pk %}
 
-            <a href="{% url 'article_edit' article.pk %}">
-                Edit
-            </a>
+            <div class="card-footer text-center text-muted">
 
-            |
+                <a href="{% url 'article_edit' article.pk %}">
+                    Edit
+                </a>
 
-            <a href="{% url 'article_delete' article.pk %}">
-                Delete
-            </a>
+                |
 
-        </div>
+                <a href="{% url 'article_delete' article.pk %}">
+                    Delete
+                </a>
+
+            </div>
+
+        {% endif %}
 
     </div>
 

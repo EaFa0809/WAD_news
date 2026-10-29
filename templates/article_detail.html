@@ -24,15 +24,19 @@
 
 <div class="mt-4">
 
-    <a href="{% url 'article_edit' article.pk %}"
-       class="btn btn-info">
-        Edit
-    </a>
+    {% if article.author.pk == request.user.pk %}
 
-    <a href="{% url 'article_delete' article.pk %}"
-       class="btn btn-danger">
-        Delete
-    </a>
+        <a href="{% url 'article_edit' article.pk %}"
+           class="btn btn-info">
+            Edit
+        </a>
+
+        <a href="{% url 'article_delete' article.pk %}"
+           class="btn btn-danger">
+            Delete
+        </a>
+
+    {% endif %}
 
     <a href="{% url 'article_list' %}"
        class="btn btn-secondary">
