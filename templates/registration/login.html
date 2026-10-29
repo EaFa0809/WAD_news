@@ -5,28 +5,53 @@
 
 {% block content %}
 
-<div class="row justify-content-center">
-    <div class="col-md-6">
+<div class="auth-container">
 
-        <h2 class="mb-4">Log In</h2>
+    <div class="auth-panel">
+
+        <div class="section-label">
+            WELCOME BACK
+        </div>
+
+        <h2>Log In</h2>
+
+        <p class="article-excerpt mb-4">
+            Sign in to your Chronicle account.
+        </p>
 
         <form method="post">
+
             {% csrf_token %}
 
             {{ form|crispy }}
 
-            <button class="btn btn-success" type="submit">
+            <button type="submit"
+                    class="btn btn-primary-custom w-100">
                 Log In
             </button>
+
         </form>
 
-        <p class="mt-3">
-            <a href="{% url 'password_reset' %}">
-                Forgot your password?
-            </a>
-        </p>
+        <div class="mt-4 text-center">
+
+            <p>
+                <a href="{% url 'password_reset' %}">
+                    Forgot your password?
+                </a>
+            </p>
+
+            <p class="article-excerpt">
+                Don't have an account?
+
+                <a href="{% url 'signup' %}">
+                    Sign Up
+                </a>
+            </p>
+
+        </div>
 
     </div>
+
 </div>
 
 {% endblock content %}

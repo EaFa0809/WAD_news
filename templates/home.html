@@ -4,52 +4,249 @@
 
 {% block content %}
 
-<div class="mt-4">
+<!-- HERO SECTION -->
 
-    {% if user.is_authenticated %}
+<section class="hero-section">
 
-        <h1>Welcome, {{ user.username }}!</h1>
+    <div class="container">
 
-        <p>
-            You are {{ user.age }} years old.
-        </p>
+        <div class="hero-content">
 
-        <p>
-            Welcome to Newspaper, your personal news platform.
-        </p>
+            <div class="hero-badge">
+                ◆ INDEPENDENT DIGITAL JOURNALISM
+            </div>
 
-        <a href="{% url 'article_list' %}"
-           class="btn btn-primary">
-            View All Articles
-        </a>
+            <h1 class="hero-title">
 
-        <a href="{% url 'article_new' %}"
-           class="btn btn-success">
-            Create Article
-        </a>
+                Stories That Matter.<br>
 
-    {% else %}
+                <span>Perspectives That Inspire.</span>
 
-        <h1>Welcome to Newspaper!</h1>
+            </h1>
 
-        <p>Discover the latest news and articles.</p>
+            <p class="hero-description">
+                Welcome to The Daily Chronicle.
+                A modern digital newspaper where ideas are shared,
+                stories are told, and every voice has something
+                worth saying.
+            </p>
 
-        <p>
-            Create an account or log in to get started.
-        </p>
+            {% if user.is_authenticated %}
 
-        <a href="{% url 'signup' %}"
-           class="btn btn-primary">
-            Get Started
-        </a>
+                <p class="mb-4">
+                    Welcome back,
+                    <strong>{{ user.username }}</strong>!
+                </p>
 
-        <a href="{% url 'article_list' %}"
-           class="btn btn-outline-secondary">
-            View Articles
-        </a>
+                <div class="hero-buttons">
 
-    {% endif %}
+                    <a href="{% url 'article_list' %}"
+                       class="btn btn-primary-custom">
+                        Explore Articles →
+                    </a>
 
-</div>
+                    <a href="{% url 'article_new' %}"
+                       class="btn btn-login">
+                        Write an Article
+                    </a>
+
+                </div>
+
+            {% else %}
+
+                <div class="hero-buttons">
+
+                    <a href="{% url 'article_list' %}"
+                       class="btn btn-primary-custom">
+                        Explore Articles →
+                    </a>
+
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-login">
+                        Join Our Community
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES SECTION -->
+
+<section class="section-container">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <div class="section-label">
+                THE CHRONICLE EXPERIENCE
+            </div>
+
+            <h2 class="section-title">
+                More Than Just News.
+            </h2>
+
+            <p class="section-description mx-auto">
+                Discover, create, and connect through stories
+                that bring people together.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- FEATURE 1 -->
+
+            <div class="col-md-4">
+
+                <div class="chronicle-card">
+
+                    <span class="article-tag">
+                        DISCOVER
+                    </span>
+
+                    <h3 class="article-title">
+                        Explore Stories
+                    </h3>
+
+                    <p class="article-excerpt">
+                        Discover articles, ideas, and perspectives
+                        published by our community of writers.
+                    </p>
+
+                    <a href="{% url 'article_list' %}">
+                        Browse Articles →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 2 -->
+
+            <div class="col-md-4">
+
+                <div class="chronicle-card">
+
+                    <span class="article-tag">
+                        CREATE
+                    </span>
+
+                    <h3 class="article-title">
+                        Share Your Voice
+                    </h3>
+
+                    <p class="article-excerpt">
+                        Write and publish your own articles.
+                        Share your knowledge, experiences,
+                        and unique point of view.
+                    </p>
+
+                    {% if user.is_authenticated %}
+
+                        <a href="{% url 'article_new' %}">
+                            Start Writing →
+                        </a>
+
+                    {% else %}
+
+                        <a href="{% url 'signup' %}">
+                            Get Started →
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 3 -->
+
+            <div class="col-md-4">
+
+                <div class="chronicle-card">
+
+                    <span class="article-tag">
+                        CONNECT
+                    </span>
+
+                    <h3 class="article-title">
+                        Join the Conversation
+                    </h3>
+
+                    <p class="article-excerpt">
+                        Engage with writers and readers
+                        through meaningful discussions
+                        and article comments.
+                    </p>
+
+                    <a href="{% url 'article_list' %}">
+                        Join the Discussion →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+
+<section class="section-container">
+
+    <div class="container">
+
+        <div class="chronicle-card text-center p-5">
+
+            <div class="section-label">
+                BE PART OF THE STORY
+            </div>
+
+            <h2 class="section-title">
+                Every Story Starts Somewhere.
+            </h2>
+
+            <p class="section-description mx-auto mb-4">
+                Your next great idea deserves to be heard.
+                Join The Daily Chronicle and start sharing
+                your perspective today.
+            </p>
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'article_new' %}"
+                   class="btn btn-primary-custom">
+                    Publish Your Story →
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'signup' %}"
+                   class="btn btn-primary-custom">
+                    Create Your Account →
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock content %}

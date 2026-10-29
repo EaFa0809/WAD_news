@@ -1,0 +1,735 @@
+/* =========================================
+   THE DAILY CHRONICLE
+   GLOBAL DESIGN SYSTEM
+========================================= */
+
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #172033;
+
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+
+    --border: #334155;
+
+    --radius: 16px;
+
+    --transition: all 0.25s ease;
+}
+
+
+/* =========================================
+   GENERAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+
+    font-family: "Inter", sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+p {
+    line-height: 1.8;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+.main-content {
+    flex: 1;
+    width: 100%;
+    padding-bottom: 80px;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.chronicle-navbar {
+    background: rgba(15, 23, 42, 0.94);
+    border-bottom: 1px solid var(--border);
+
+    padding: 18px 0;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(18px);
+}
+
+.chronicle-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    color: white !important;
+    font-size: 22px;
+    font-weight: 700;
+
+    letter-spacing: -1px;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--accent);
+    color: var(--bg-primary);
+
+    border-radius: 11px;
+    font-size: 19px;
+}
+
+.brand-accent,
+.footer-brand span {
+    color: var(--accent);
+}
+
+.chronicle-navbar .nav-link {
+    color: var(--text-secondary);
+
+    margin: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.chronicle-navbar .nav-link:hover,
+.chronicle-navbar .nav-link:focus {
+    color: var(--accent);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chronicle-navbar .navbar-toggler {
+    border: 1px solid var(--border);
+}
+
+.chronicle-navbar .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn-primary-custom {
+    background: var(--accent);
+    color: var(--bg-primary);
+
+    padding: 10px 22px;
+
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+
+    border: 1px solid var(--accent);
+
+    transition: var(--transition);
+}
+
+.btn-primary-custom:hover {
+    background: var(--accent-hover);
+    color: var(--bg-primary);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.18);
+}
+
+.btn-login {
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+
+    padding: 10px 22px;
+    border-radius: 10px;
+
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.btn-login:hover {
+    background: var(--bg-secondary);
+    color: white;
+    border-color: var(--accent);
+}
+
+.btn-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: var(--bg-secondary);
+    color: white;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    padding: 7px 14px;
+}
+
+.btn-profile:hover,
+.btn-profile:focus,
+.btn-profile.show {
+    background: var(--bg-tertiary);
+    border-color: var(--accent);
+    color: white;
+}
+
+.profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+
+    font-weight: 700;
+}
+
+.chronicle-dropdown {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    padding: 8px;
+}
+
+.chronicle-dropdown .dropdown-item {
+    color: var(--text-primary);
+    border-radius: 7px;
+    padding: 10px 12px;
+}
+
+.chronicle-dropdown .dropdown-item:hover,
+.chronicle-dropdown .dropdown-item:focus {
+    background: var(--bg-tertiary);
+    color: var(--accent);
+}
+
+.chronicle-dropdown .dropdown-divider {
+    border-color: var(--border);
+}
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero-section {
+    position: relative;
+
+    min-height: 65vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 20%,
+            rgba(56, 189, 248, 0.12),
+            transparent 65%
+        );
+}
+
+.hero-content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.08);
+
+    border: 1px solid rgba(56, 189, 248, 0.25);
+
+    border-radius: 30px;
+
+    padding: 9px 20px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 30px;
+}
+
+.hero-title {
+    font-size: clamp(42px, 6vw, 76px);
+
+    font-weight: 700;
+    letter-spacing: -3px;
+
+    line-height: 1.1;
+
+    margin-bottom: 28px;
+}
+
+.hero-title span {
+    color: var(--accent);
+}
+
+.hero-description {
+    max-width: 620px;
+    margin: 0 auto 36px;
+
+    color: var(--text-secondary);
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.hero-buttons .btn {
+    padding: 14px 28px;
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.section-container {
+    padding: 65px 0;
+}
+
+.section-heading {
+    margin-bottom: 36px;
+}
+
+.section-label {
+    color: var(--accent);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 14px;
+}
+
+.section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 12px;
+}
+
+.section-description {
+    color: var(--text-secondary);
+    max-width: 650px;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.chronicle-card,
+.feature-card,
+.card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    color: var(--text-primary);
+
+    overflow: hidden;
+
+    transition: var(--transition);
+}
+
+.chronicle-card:hover,
+.feature-card:hover {
+    border-color: rgba(56, 189, 248, 0.55);
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.chronicle-card {
+    height: 100%;
+    padding: 30px;
+}
+
+.card-header,
+.card-footer {
+    background: rgba(15, 23, 42, 0.35);
+    color: var(--text-secondary);
+
+    border-color: var(--border);
+}
+
+.card-body {
+    color: var(--text-primary);
+}
+
+.article-tag {
+    display: inline-block;
+
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    padding: 6px 12px;
+}
+
+.article-title {
+    margin: 20px 0 14px;
+    font-size: 23px;
+    line-height: 1.35;
+}
+
+.article-title a {
+    color: white;
+}
+
+.article-title a:hover {
+    color: var(--accent);
+}
+
+.article-excerpt {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.article-meta {
+    color: var(--text-secondary);
+    font-size: 12px;
+
+    margin-top: 24px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.article-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding-top: 20px;
+    margin-top: 20px;
+
+    border-top: 1px solid var(--border);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   ARTICLE DETAIL
+========================================= */
+
+.article-page {
+    max-width: 850px;
+    margin: 0 auto;
+
+    padding: 70px 20px;
+}
+
+.article-page-title {
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.2;
+    letter-spacing: -2px;
+}
+
+.article-page-meta {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 24px 0;
+}
+
+.article-page-body {
+    font-size: 17px;
+    line-height: 2;
+    color: #dbe4f0;
+
+    overflow-wrap: anywhere;
+}
+
+.article-page-body p {
+    margin-bottom: 22px;
+}
+
+.comments-section {
+    margin-top: 65px;
+    padding-top: 35px;
+
+    border-top: 1px solid var(--border);
+}
+
+.comment-item {
+    padding: 22px;
+    background: var(--bg-secondary);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+}
+
+.comment-author {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   FORMS
+========================================= */
+
+.form-control,
+.form-select {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    padding: 12px 15px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--bg-secondary);
+    color: white;
+
+    border-color: var(--accent);
+
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+.form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-text,
+.helptext,
+.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+label,
+.form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+.auth-container {
+    width: min(100% - 32px, 620px);
+    margin: 70px auto;
+}
+
+.auth-panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 36px;
+}
+
+.auth-panel h1,
+.auth-panel h2 {
+    margin-bottom: 25px;
+}
+
+
+/* FOOTER */
+
+.chronicle-footer {
+    margin-top: auto;
+
+    background: #0b1220;
+
+    border-top: 1px solid var(--border);
+
+    padding: 65px 0 28px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-brand {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.footer-description {
+    margin: 15px auto 22px;
+
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+
+    margin-bottom: 35px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    color: #64748b;
+
+    border-top: 1px solid var(--border);
+
+    padding-top: 22px;
+
+    font-size: 12px;
+}
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 991px) {
+
+    .chronicle-navbar .navbar-collapse {
+        padding-top: 20px;
+    }
+
+    .chronicle-navbar .nav-link {
+        margin: 0;
+        padding: 12px 0;
+    }
+
+    .navbar-actions {
+        padding-top: 20px;
+        flex-wrap: wrap;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        min-height: 60vh;
+        padding: 75px 0;
+    }
+
+    .hero-title {
+        font-size: 43px;
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .chronicle-card {
+        padding: 22px;
+    }
+
+    .article-page {
+        padding: 45px 15px;
+    }
+
+    .auth-panel {
+        padding: 24px;
+    }
+
+    .section-container {
+        padding: 45px 0;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
