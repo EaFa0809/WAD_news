@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+from .models import Comment
 
 from .models import Article
 
@@ -79,3 +80,89 @@ class ArticlePermissionTests(TestCase):
         article = Article.objects.get(title="New Article")
 
         self.assertEqual(article.author, self.user2)
+
+class CommentTests(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        User = get_user_model()
+
+        cls.user = User.objects.create_user(
+            username="commentuser",
+            password="testpass123",
+        )
+
+        cls.article = Article.objects.create(
+            title="Article for comments",
+            body="This article will receive comments.",
+            author=cls.user,
+        )
+
+    def test_comment_creation(self):
+        comment = Comment.objects.create(
+            article=self.article,
+            author=self.user,
+            comment="Great article!",
+        )
+
+        self.assertEqual(comment.comment, "Great article!")
+        self.assertEqual(comment.author, self.user)
+        self.assertEqual(comment.article, self.article)
+
+    def test_comment_post_authenticated(self):
+        self.client.force_login(self.user)
+
+        response = self.client.post(
+            reverse(
+                "article_detail",
+                args=[self.article.pk],
+            ),
+            {
+                "comment": "This is a test comment.",
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Comment.objects.count(), 1)
+
+        comment = Comment.objects.first()
+
+        self.assertEqual(comment.author, self.user)
+        self.assertEqual(comment.article, self.article)
+
+    def test_comment_requires_login(self):
+        response = self.client.post(
+            reverse(
+                "article_detail",
+                args=[self.article.pk],
+            ),
+            {
+                "comment": "Anonymous comment",
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Comment.objects.count(), 0)
+
+    def test_comment_display(self):
+        Comment.objects.create(
+            article=self.article,
+            author=self.user,
+            comment="Visible comment",
+        )
+
+        self.client.force_login(self.user)
+
+        response = self.client.get(
+            reverse(
+                "article_detail",
+                args=[self.article.pk],
+            )
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.assertContains(
+            response,
+            "Visible comment",
+        )
