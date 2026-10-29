@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="mt-4">
+
+    {% if user.is_authenticated %}
+
+        <h2>Welcome, {{ user.username }}!</h2>
+
+        <p>You are {{ user.age }} years old.</p>
+
+        <p>Welcome to Newspaper, your personal news platform.</p>
+
+    {% else %}
+
+        <h2>Welcome to Newspaper!</h2>
+
+        <p>Discover the latest news and articles.</p>
+
+        <p>
+            Create an account or log in to get started.
+        </p>
+
+        <a href="{% url 'signup' %}" class="btn btn-primary">
+            Get Started
+        </a>
+
+    {% endif %}
+
+</div>
+
+{% endblock content %}
